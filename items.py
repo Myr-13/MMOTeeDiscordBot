@@ -32,6 +32,8 @@ Names[ITEM_HEAL_POITON] = "Heal poiton"
 Names[ITEM_MANA_POITON] = "Mana poiton"
 Names[ITEM_SOUL]        = "Soul"
 
+Sells = [ITEM_HEAL_POITON, ITEM_MANA_POITON, ITEM_COPPER]
+
 def GiveItem(user_id, item, count):
 	inv = GetAccountVar(user_id, ACC_INVENTORY)
 
@@ -101,11 +103,17 @@ def GetItemEnchant(user_id, item):
 def GetItemName(item):
 	return Names[item]
 
+def GetItemBuyCost(item):
+	return int(Costs[item] * 1.5)
+
 def SellItems(user_id, item, count):
 	if GetItemCount(user_id, item) < count:
 		count = GetItemCount(user_id, item)
 
-	RemItem(user_id, item, count)
-	SetAccountVar(user_id, ACC_MONEY, GetAccountVar(user_id, ACC_MONEY) + count * Costs[item])
+	try:
+		SetAccountVar(user_id, ACC_MONEY, GetAccountVar(user_id, ACC_MONEY) + count * Costs[item])
+		RemItem(user_id, item, count)
+	except:
+		return -1
 
 	return count

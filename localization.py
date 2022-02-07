@@ -1,7 +1,7 @@
 import json
 
 langs = {
-	"rus": {
+	"ru": {
 		"This account already created!": "Этот аккаунт уже создан!",
 		"Create new economy account": "Создать новый аккаунт в экономический системе",
 		"Show info about account on economy system": "Показать информацию о аккаунте в экономической системе",
@@ -14,7 +14,8 @@ langs = {
 		"Change lang of bot": "Сменить язык бота",
 		"Create suggestion": "Создать предложение",
 		"All accounts loaded": "Все аккаунты загружены",
-		"All accounts saved, shuting down...": "Все аккаунты сохранены, вырубаюсь..."
+		"All accounts saved, shuting down...": "Все аккаунты сохранены, вырубаюсь...",
+		"Invalid lang\nru, en": "Неправильный язык\nru, en"
 	}
 }
 

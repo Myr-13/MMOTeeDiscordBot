@@ -190,8 +190,12 @@ async def on_message(message):
 
 	if args[0] == "$lang":
 		if len(args) > 1:
-			if args[1] == "eng" or args[1] == "rus":
+			if args[1] == "en" or args[1] == "ru":
 				SetAccountVar(user_id, ACC_LANG, args[1])
+			else:
+				await message.channel.send(Localize(user_id, "Invalid lang\nru, en"))
+		else:
+			await message.channel.send("$lang <lang>\nru, en")
 
 		return
 
@@ -217,7 +221,7 @@ async def on_message(message):
 
 	if args[0] == "$rpg":
 		if len(args) == 1:
-			await message.channel.send("$rpg <command>\nList of commands: hunt, sell, item_list, inventory, use")
+			await message.channel.send("$rpg <command>\nList of commands: hunt, sell, item_list, inventory, use, buy, upgrade")
 
 			return
 
@@ -241,4 +245,4 @@ async def on_message(message):
 	SetAccountVar(user_id, ACC_EXP, GetAccountVar(user_id, ACC_EXP) + 10)
 	CheckLevel(user_id)
 
-client.run("token")
+client.run("")

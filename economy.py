@@ -15,6 +15,11 @@ ACC_INVENTORY = 7
 ACC_HP = 8
 ACC_MANA = 9
 ACC_SUGGESTIONS_NUM = 10
+ACC_UPGRADE_HP = 11
+ACC_UPGRADE_DEF = 12
+ACC_UPGRADE_HUNT = 13
+ACC_UPGRADE_EXP_BONUS = 14
+ACC_UPGRADE_POINTS = 15
 
 def CreateAccount(user_id, name):
 	Can = True
@@ -32,12 +37,17 @@ def CreateAccount(user_id, name):
 	acc.append(0) # Money
 	acc.append(1000) # ExpForUp
 	acc.append("Player") # Rank
-	acc.append("eng") # Lang
-	acc.append(name)
-	acc.append([])
-	acc.append(10)
-	acc.append(10)
-	acc.append(0)
+	acc.append("en") # Lang
+	acc.append(name) # Name of account
+	acc.append([]) # Inventory
+	acc.append(10) # Health
+	acc.append(10) # Mana
+	acc.append(0) # Suggestions
+	acc.append(0) # Upgrade health
+	acc.append(0) # Upgrade def
+	acc.append(0) # Upgrade hunt
+	acc.append(0) # Upgrade exp bonus
+	acc.append(0) # Upgrade points count
 
 	accounts[str(user_id)] = acc
 
@@ -88,6 +98,7 @@ def CheckLevel(user_id):
 			accounts[user_id][ACC_LEVEL] += 1
 			accounts[user_id][ACC_EXPFORUP] *= 1.5
 			accounts[user_id][ACC_EXPFORUP] = int(accounts[user_id][ACC_EXPFORUP])
+			accounts[user_id][ACC_UPGRADE_POINTS] += 1
 	except:
 		pass
 
